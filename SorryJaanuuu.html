@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mere Ladduu, I'm Sorry, Summi Jaanuuu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite, flickerBackground 3s infinite;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      transition: background 2s ease;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes flickerBackground {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(0.9); }
+      75% { filter: brightness(1.05); }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+      animation: pulse 2s infinite, fadeIn 2s ease-in;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    p {
+      max-width: 600px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-size: 1.1em;
+      animation: fadeIn 2s ease-in;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 50px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 8px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    button:hover {
+      background: #ff3e66;
+    }
+
+    .hidden-message, .promise-wall, .gallery {
+      display: none;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 120px;
+      margin: 5px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.2);
+    }
+
+    .heart, .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transform: rotate(45deg);
+      animation: floatHeart 5s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      background: red;
+    }
+
+    .petal {
+      background: pink;
+      border-radius: 50% 50% 50% 50%;
+      width: 15px;
+      height: 15px;
+    }
+
+    .heart::before,
+    .heart::after,
+    .petal::before,
+    .petal::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart::before, .petal::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after, .petal::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+
+    .typing {
+      border-right: .15em solid #fff;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      animation: typing 6s steps(80, end), blink-caret 0.75s step-end infinite, fadeIn 2s ease-in;
+      white-space: normal;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      p { font-size: 1em; padding: 0 10px; }
+      .gallery img { max-width: 100px; }
+      button { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mere Ladduu, My Dearest Summi Gudiyaaa 💖</h1>
+  <p>I've made mistakes, and my heart feels heavy with regret. Baby yeh kuch bhi nai hai but please accept my apology and click the button below, my love, to hear everything I wish to tell you...</p>
+  <button onclick="revealMessage(); launchConfetti(); changeBackground();">Reveal My Heart 🌸</button>
+  <button onclick="showPromiseWall(); launchConfetti(); changeBackground();">Promise Wall 💍</button>
+  <button onclick="showGallery(); launchConfetti(); changeBackground();">Our Memories 📸</button>
+
+  <div class="hidden-message" id="message">
+    <p class="typing"><strong>My Love, My Summi, My Hornuuu,</strong> Baby aap aap hai, english mai bole toh: You are the sunshine in my life, the gentle breeze that calms my storm. Your beauty is beyond words, your kindness is my blessing, and your love is my treasure, and your body is just phenomenal. Baby mai har cheez ke liyeh Sorry hu, I seriously love the way you are and the way you make even the darkest days bright. I am deeply sorry for not giving you the time and attention you deserve, Bhairiya maaro meku. With every heartbeat, I promise to love you more, cherish you deeper, and never make you feel alone again. Please forgive me, Summi. You are my everything, today and always. 💖</p>
+  </div>
+
+  <div class="promise-wall" id="promiseWall">
+    <h2>My Promises to You, Summi 💖</h2>
+    <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+      <li>I promise to listen to you, truly listen, always.</li>
+      <li>I promise to respect your feelings, every single day.</li>
+      <li>I promise to make you smile, even on tough days.</li>
+      <li>I promise to stand by you, no matter what life brings.</li>
+      <li>I promise to cherish you, forever and always.</li>
+    </ul>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <h2>Our Beautiful Memories Together 📸</h2>
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6XBr8pQf5a8bLco5UCAD7s5VmcY8GzcU9enPYeVa01O125dfvcFz-T4w&s" alt="Memory 1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXJmIqxtnVr8QiynnUKCWct4vFY_zB0vsS3nGpMvDkGUiCIdow2NKmoX8&s" alt="Memory 2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf5oy7sc1qFSQ2pajtTjUOoJZ7Gvpfwn0I91KkLpA7V1Oml1aoFKA98ek&s" alt="Memory 3">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6XBr8pQf5a8bLco5UCAD7s5VmcY8GzcU9enPYeVa01O125dfvcFz-T4w&s" alt="Memory 4">
+    </div>
+  </div>
+
+  <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+
+  <script>
+    function revealMessage() {
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('promiseWall').style.display = 'none';
+      document.getElementById('gallery').style.display = 'none';
+    }
+
+    function showPromiseWall() {
+      document.getElementById('promiseWall').style.display = 'block';
+      document.getElementById('message').style.display = 'none';
+      document.getElementById('gallery').style.display = 'none';
+    }
+
+    function showGallery() {
+      document.getElementById('gallery').style.display = 'block';
+      document.getElementById('message').style.display = 'none';
+      document.getElementById('promiseWall').style.display = 'none';
+    }
+
+    function changeBackground() {
+      document.body.style.background = 'linear-gradient(45deg, #ffecd2, #fcb69f)';
+    }
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = Math.random() > 0.5 ? 'heart' : 'petal';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const confettiCtx = confettiCanvas.getContext('2d');
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti() {
+      const confetti = [];
+      for (let i = 0; i < 150; i++) {
+        confetti.push({
+          x: Math.random() * confettiCanvas.width,
+          y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 40 + 10,
+          color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+          tilt: Math.random() * 10 - 10,
+          tiltAngleIncremental: Math.random() * 0.07 + .05,
+          tiltAngle: 0
+        });
+      }
+
+      function draw() {
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confetti.forEach(c => {
+          confettiCtx.beginPath();
+          confettiCtx.lineWidth = c.r / 2;
+          confettiCtx.strokeStyle = c.color;
+          confettiCtx.moveTo(c.x + c.tilt + c.r / 2, c.y);
+          confettiCtx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 2);
+          confettiCtx.stroke();
+        });
+        update();
+      }
+
+      function update() {
+        confetti.forEach(c => {
+          c.tiltAngle += c.tiltAngleIncremental;
+          c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
+          c.x += Math.sin(c.d);
+          c.tilt = Math.sin(c.tiltAngle) * 15;
+        });
+      }
+
+      const interval = setInterval(draw, 20);
+      setTimeout(() => clearInterval(interval), 3000);
+    }
+  </script>
+</body>
+</html>
